@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}
+Profile Page
+{% endblock title %}
+
+{% block content %}
+
+<div class="text-center">
+    <h1>Hello {{user}}</h1>
+    <h1>welcome to profile page</h1>
+</div>
+{%if messages%}
+        {%for msg in messages%}
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    {{msg}}
+                </div>
+            </div>
+            
+        {%endfor%}
+    {%endif%}
+<form method="POST" style="width: 50%; margin:auto; padding: 30px" novalidate>
+    {% csrf_token %}
+    <!--{{form |crispy}}-->
+    {% for fm in form %}
+        {{fm.label_tag}}
+        {{fm}}
+        {{fm.errors|striptags}}
+    {% endfor %}
+    <br>
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a href="{%url 'change_with_old'%}" class='btn btn-danger' href="">Change password</a>
+</form>
+{% endblock content %}

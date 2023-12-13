@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home page
+{% endblock title %}
+
+{% block content %}
+{%if messages%}
+        {%for msg in messages%}
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    {{msg}}
+                </div>
+            </div>
+            
+        {%endfor%}
+    {%endif%}
+<div class="text-center">
+    <h1>WelCome</h1>
+    <h1>If you didn't create an account first SignUP</h1>
+    <h1>Have an Account ? Login </h1>
+
+</div>
+{% endblock content %}

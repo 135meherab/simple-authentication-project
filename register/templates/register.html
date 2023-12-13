@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+
+{% block title %}
+Registraion Form
+{% endblock title %}
+
+
+
+{% block content %}
+{%if messages%}
+        {%for msg in messages%}
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <div>
+                    {{msg}}
+                </div>
+            </div>
+            
+        {%endfor%}
+    {%endif%}
+    
+      
+    
+    <form method="POST" style="width: 50%; margin:auto; padding: 30px" novalidate>
+        {% csrf_token %}
+        <h1>Create Account</h1>
+        <!--{{form |crispy}}-->
+        {% for fm in form %}
+            {{fm.label_tag}}
+            {{fm}}
+            {{fm.errors|striptags}}
+        {% endfor %}
+        <br>
+        <button class="btn btn-primary mt-3" type="submit">Submit</button>
+    </form>
+{% endblock content %}
